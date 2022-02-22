@@ -32,3 +32,15 @@ def professional():
 @app.route('/personal')
 def personal():
     return render_template('personal.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/review')
+def review():
+    return render_template('review.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')

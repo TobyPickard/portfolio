@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <main>
-        <h1>{% block title %} Welcome to personal projects page {% endblock %}</h1>
-    </main>
+<link rel="stylesheet" href="../static/css/sidetabs.css">
+<!-- Side navigation -->
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Portfolio')">Portfolio</button>
+    <button class="tablinks" onclick="openTab(event, 'Blog')">Blog</button>
+    <button class="tablinks" onclick="openTab(event, 'Photoshop')">Photoshop Project</button>
+</div>
+
+<div id="Portfolio" class="tabcontent">
+<h3>London</h3>
+<p>London is the capital city of England
+</div>
+
+<div id="Blog" class="tabcontent">
+<h3>Paris</h3>
+<p>Paris is the capital of France.</p>
+</div>
+
+<div id="Photoshop" class="tabcontent">
+<h3>Tokyo</h3>
+<p>Tokyo is the capital of Japan.</p>
+</div> 
 {% endblock %}
 
 
