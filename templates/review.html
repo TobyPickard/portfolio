@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% block content %}
+<link rel="stylesheet" href="../static/css/sidetabs.css">
+<!-- Side navigation -->
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'View')">View</button>
+    <button class="tablinks" onclick="openTab(event, 'Post')">Post</button>
+</div>
+
+<div id="View" class="tabcontent">
+<h3>London</h3>
+<p>London is the capital city of England
+</div>
+
+<div id="Post" class="tabcontent">
+<h3>Paris</h3>
+<p>Paris is the capital of France.</p>
+</div>
+{% endblock %}
