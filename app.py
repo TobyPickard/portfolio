@@ -13,10 +13,6 @@ def shutdown():
     shutdown_server()
     return 'Server shutting down...'
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -41,6 +37,6 @@ def contact():
 def review():
     return render_template('review.html')
 
-@app.route('/home')
+@app.route('/')
 def home():
     return render_template('home.html')
