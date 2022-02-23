@@ -1,5 +1,7 @@
 {% extends 'base.html' %}{% block content %}
 <link rel="stylesheet" href="../static/css/sidetabs.css">
+<link rel="stylesheet" href="../static/css/textboxes.css">
+<link rel="stylesheet" href="../static/css/buttons.css">
 <!-- Side navigation -->
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'View')">View</button>
@@ -12,7 +14,9 @@
 </div>
 
 <div id="Post" class="tabcontent">
-<h3>Paris</h3>
-<p>Paris is the capital of France.</p>
+    <input type="text" class="imgURLText" size="70" id="urlText" placeholder="First Name">
+    <input type="text" class="imgURLText" size="70" id="urlText" placeholder="Last Name">
+    <input type="text" class="imgURLText" size="70" id="urlText" placeholder="Relation to Toby">
+    <textarea class="imgURLText" id="ReviewTextbox" cols="20" wrap="hard" placeholder="Write your review..."></textarea>
 </div>
 {% endblock %}

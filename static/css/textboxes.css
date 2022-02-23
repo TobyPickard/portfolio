@@ -1,0 +1,17 @@
+.imgURLText {
+    font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: block;
+    width: 500px;
+    padding: 10px;
+}
+
+#ReviewTextbox {
+    height: 200px;
+    padding-top: 0%;
+}
