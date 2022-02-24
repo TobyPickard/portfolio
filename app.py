@@ -40,3 +40,20 @@ def review():
 @app.route('/')
 def home():
     return render_template('home.html')
+
+@app.route('/review', methods=['POST'])
+def action():
+    form_data = {}
+    form_data['first_name'] = request.form['first_name']
+    form_data['last_name'] = request.form['last_name']
+    form_data['relation'] = request.form['relation']
+    form_data['review'] = request.form['review']
+    
+    for i in form_data:
+        if not form_data[i]:
+            print(f'{i} was left empty')
+            print("invalid review")
+            print("please try again")
+            break
+    
+    return render_template('review.html')

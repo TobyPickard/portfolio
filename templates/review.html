@@ -14,9 +14,15 @@
 </div>
 
 <div id="Post" class="tabcontent">
-    <input type="text" class="imgURLText" size="70" id="urlText" placeholder="First Name">
-    <input type="text" class="imgURLText" size="70" id="urlText" placeholder="Last Name">
-    <input type="text" class="imgURLText" size="70" id="urlText" placeholder="Relation to Toby">
-    <textarea class="imgURLText" id="ReviewTextbox" cols="20" wrap="hard" placeholder="Write your review..."></textarea>
+    <form id="frm1" action="/review" method="POST">
+        <input name="first_name" type="text" class="imgURLText" size="70" id="FirstName" placeholder="First Name">
+        <input name="last_name" type="text" class="imgURLText" size="70" id="urlText" placeholder="Last Name">
+        <input name="relation" type="text" class="imgURLText" size="70" id="urlText" placeholder="Relation to Toby">
+        <textarea name="review" class="imgURLText" id="ReviewTextbox" cols="20" wrap="hard" placeholder="Write your review..."></textarea>
+        <input class="center" type="submit" />
+    </form>
+
 </div>
+
+<script src="/static/js/reviewPage.js"></script>
 {% endblock %}

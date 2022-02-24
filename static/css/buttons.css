@@ -4,6 +4,13 @@
     font-style: italic;
     font-variant: normal;
     font-weight: bold;
-    margin: auto;
-    
+    width: 500px;
+    margin-top: 20px;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    left: 53%;
+    margin-top: 20px;
 }
