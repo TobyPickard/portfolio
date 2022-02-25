@@ -10,7 +10,11 @@
 
 <div id="View" class="tabcontent">
 <h3>London</h3>
-<p>London is the capital city of England
+{% for review in reviews %}
+    <h4>
+        {{ review.name }}
+    </h4>
+{% endfor %}
 </div>
 
 <div id="Post" class="tabcontent">
