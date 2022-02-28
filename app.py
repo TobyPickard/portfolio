@@ -1,17 +1,24 @@
-from flask import Flask, render_template, request
+from datetime import date
+from hashlib import new
+from operator import imod
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+import sqlite3
 
+conn = sqlite3.connect('reviews.db') 
+c = conn.cursor()
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///reviews.db'
 
-def shutdown_server():
-    func = request.environ.get('werkzeug.server.shutdown')
-    if func is None:
-        raise RuntimeError('Not running with the Werkzeug Server')
-    func()
-    
-@app.get('/shutdown')
-def shutdown():
-    shutdown_server()
-    return 'Server shutting down...'
+db = SQLAlchemy(app)
+
+class Reviews(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name =  db.Column(db.String(200), nullable=False)
+    date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow)
+    relation = db.Column(db.String(200), nullable=False)
+    review = db.Column(db.String(200), nullable=False)
 
 @app.route('/about')
 def about():
@@ -33,27 +40,39 @@ def personal():
 def contact():
     return render_template('contact.html')
 
-@app.route('/review')
-def review():
-    return render_template('review.html')
-
 @app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/review', methods=['POST'])
-def action():
-    form_data = {}
-    form_data['first_name'] = request.form['first_name']
-    form_data['last_name'] = request.form['last_name']
-    form_data['relation'] = request.form['relation']
-    form_data['review'] = request.form['review']
-    
-    for i in form_data:
-        if not form_data[i]:
-            print(f'{i} was left empty')
-            print("invalid review")
-            print("please try again")
-            break
-    
-    return render_template('review.html')
+@app.route('/review')
+def review():
+    reviews = Reviews.query.order_by(Reviews.date_created)
+    return render_template('review.html', reviews=reviews)
+
+@app.route('/review_process', methods=['POST'])
+def process_review():
+    if request.method == "POST":
+        form_data = {}
+        form_data['fname'] = request.form['first_name']
+        form_data['lname'] = request.form['last_name']
+        form_data['relation'] = request.form['relation']
+        form_data['review'] = request.form['review']
+        
+        print(form_data)
+        for user_inp in form_data.values():
+            if not user_inp:
+                print('invalid')
+                return redirect('/review')
+        print(form_data)
+        new_review = Reviews(name=form_data['fname'] + ' ' + form_data['lname'],relation=form_data['relation'], review=form_data['review'])
+        print(new_review)
+        try: 
+            db.session.add(new_review)
+            db.session.commit()
+        except Exception as e:
+            print(e)
+            return 'there was an error'
+    return redirect('/review')
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000)
