@@ -1,6 +1,12 @@
 h1 {
+    position: sticky;
     border: 2px #eee solid;
     color: rgb(0, 0, 0);
     text-align: center;
     padding: 10px;
+}
+
+.reviews {
+    position: sticky;
+    text-align: center;
 }

@@ -1,18 +1,39 @@
-{% extends 'base.html' %}{% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
 <link rel="stylesheet" href="../static/css/sidetabs.css">
-<!-- Side navigation -->
-<div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'View')">View</button>
-    <button class="tablinks" onclick="openTab(event, 'Post')">Post</button>
-</div>
+<link rel="stylesheet" href="../static/css/textboxes.css">
+<link rel="stylesheet" href="../static/css/buttons.css">
+<link rel="stylesheet" href="../static/css/popup.css">
+<link rel="stylesheet" href="../static/css/style.css">
 
-<div id="View" class="tabcontent">
-<h3>London</h3>
-<p>London is the capital city of England
-</div>
+<h1>Reviews</h1>
 
-<div id="Post" class="tabcontent">
-<h3>Paris</h3>
-<p>Paris is the capital of France.</p>
+<button class="post" onclick="openForm()">Post a review</button><br>
+
+{% for review in reviews %}
+    <h4 class="reviews">
+        Name: {{ review.name }} <br>
+        Relation: {{ review.relation }}<br>
+        Review: {{ review.review }}<br>
+        Date created: {{ review.date_created}}<br>
+        --------------------------------------<br>
+    </h4>
+{% endfor %}
+
+<div id="myForm" class="form-popup">
+    <form id="frm1" action="/review_process" method="POST">
+        <input name="first_name" type="text" class="imgURLText" size="70" id="FirstName" placeholder="First Name">
+        <input name="last_name" type="text" class="imgURLText" size="70" id="urlText" placeholder="Last Name">
+        <input name="relation" type="text" class="imgURLText" size="70" id="urlText" placeholder="Relation to Toby">
+        <textarea name="review" class="imgURLText" id="ReviewTextbox" cols="20" wrap="hard" placeholder="Write your review..."></textarea>
+        <div>
+            <input class="center" type="submit" />
+        </div>
+        <div>
+            <input class="center" type="button" value="Cancel" onclick="closeForm()" />
+        </div>
+    </form>
+
 </div>
 {% endblock %}
