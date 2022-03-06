@@ -1,8 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<link rel="stylesheet" href="../static/css/sidebar.css">
+<link rel="stylesheet" href="../static/css/sidetabs.css">
+<link rel="stylesheet" href="../static/css/textboxes.css">
+<link rel="stylesheet" href="../static/css/buttons.css">
+<link rel="stylesheet" href="../static/css/popup.css">
+<link rel="stylesheet" href="../static/css/style.css">
 <!-- Page content -->
 <div class="main">
+    <form id="frm1" action="/send_contact" method="POST">
+        <input name="name" type="text" class="imgURLText" size="70" id="FirstName" placeholder="First Name">
+        <input name="email" type="text" class="imgURLText" size="70" id="urlText" placeholder="Last Name">
+        <input name="subject" type="text" class="imgURLText" size="70" id="urlText" placeholder="Relation to Toby">
+        <textarea name="message" class="imgURLText" id="ReviewTextbox" cols="20" wrap="hard" placeholder="Write your review..."></textarea>
+        <div>
+            <input class="center" type="submit" />
+        </div>
+    </form>
+    
+    <br>
+    <br>
+    <br>
+    <h1>Social medias</h1>
+    <a href="https://www.linkedin.com/in/toby-pickard-84bb53175">LinkedIn</a>
+    <a href="https://www.facebook.com/toby.pickard">Facebook</a>
+    <a href="https://www.instagram.com/tobypickard">Instagram</a>
+    <a href="https://github.com/TobyPickard">Github</a>
 </div> 
 {% endblock %}
