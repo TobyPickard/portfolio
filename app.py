@@ -1,3 +1,4 @@
+from crypt import methods
 from datetime import date
 from hashlib import new
 from operator import imod
@@ -39,6 +40,18 @@ def personal():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/send_contact', methods=['POST'])
+def send_contact():
+    if request.method == 'POST':
+        form_data = {}
+        form_data['Name'] = request.form['name']
+        form_data['Email'] = request.form['email']
+        form_data['Subject'] = request.form['subject']
+        form_data['Message'] = request.form['message']
+        
+        print(form_data)
+    return redirect('/contact')
 
 @app.route('/')
 def home():
