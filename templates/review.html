@@ -9,7 +9,7 @@
 
 <h1>Reviews</h1>
 
-<button class="post" onclick="openForm()">Post a review</button><br>
+<input class="imgURLText" type="button" value="Post review" onclick="openForm()" /><br>
 
 {% for review in reviews %}
     <h4 class="reviews">
@@ -27,12 +27,8 @@
         <input name="last_name" type="text" class="imgURLText" size="70" id="urlText" placeholder="Last Name">
         <input name="relation" type="text" class="imgURLText" size="70" id="urlText" placeholder="Relation to Toby">
         <textarea name="review" class="imgURLText" id="ReviewTextbox" cols="20" wrap="hard" placeholder="Write your review..."></textarea>
-        <div>
-            <input class="center" type="submit" />
-        </div>
-        <div>
-            <input class="center" type="button" value="Cancel" onclick="closeForm()" />
-        </div>
+        <input class="imgURLText" type="submit" />
+        <input class="imgURLText" type="button" value="Cancel" onclick="closeForm()" />
     </form>
 
 </div>
