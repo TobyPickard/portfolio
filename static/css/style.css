@@ -6,6 +6,10 @@ h1 {
     padding: 10px;
 }
 
+#Sub-heading {
+    margin-top: 50px;
+}
+
 .reviews {
     position: sticky;
     text-align: center;
