@@ -1,7 +1,3 @@
-from crypt import methods
-from datetime import date
-from hashlib import new
-from operator import imod
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -88,4 +84,4 @@ def process_review():
     return redirect('/review')
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000)
+    app.run(host='0.0.0.0', port=600)
