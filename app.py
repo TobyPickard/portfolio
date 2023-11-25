@@ -17,13 +17,13 @@ def about():
 def contact():
     return render_template('user/contact.html')
 
-@app.route('/admin_add_project')
-def admin_add_project():
-    return render_template('admin/add_project.html')
-
 @app.route('/projects')
 def projects():
     return render_template('user/projects.html')
+
+@app.route('/admin_add_project')
+def admin_add_project():
+    return render_template('admin/add_project.html')
 
 @app.route('/add_project', methods=['POST'])
 def add_project():
