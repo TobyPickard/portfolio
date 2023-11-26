@@ -1,7 +1,6 @@
 import sqlite3
-from datetime import datetime
 from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
@@ -39,6 +38,10 @@ def add_project():
         # This may need to wait for the app to be deployed somewhere on the cloud. 
         print(form_data)
     return redirect('user/home.html')
+
+@app.route('/projects')
+def projects():
+    return render_template('USER/projectS.html')
 
 @app.route('/send_contact', methods=['POST'])
 def send_contact():
