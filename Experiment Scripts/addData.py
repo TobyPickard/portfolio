@@ -6,7 +6,7 @@ cursor = connection.cursor()
 data = [(1, 'test', 'testing database bruh', 'testing', 'python', 'testing', 'now', 'later', 'see for yo self', 'gh link' ),
         (2, 'test', 'testing database bruh', 'testing', 'python', 'testing', 'now', 'later', 'see for yo self', 'gh link' )]
 data = {
-    'proj_id':1,
+    'proj_id':2,
     'proj_name': 'dict_test'
 }
 

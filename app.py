@@ -27,25 +27,27 @@ def admin_add_project():
 @app.route('/add_project', methods=['POST'])
 def add_project():
     if request.method == 'POST':
-        form_data = {
-            'Project Name': request.form['proj-name'],
-            'Project Purpose': request.form['purpose'],
-            'Objective': request.form['objective'],
-            'Tech Stack': request.form['stack'],
-            'Description': request.form['description'],
-            'Project Start': request.form['proj-start'],
-            'Project End': request.form['proj-end'],
-            'Final Product': request.form['final'],
-            'Github Link': request.form['gh-link']
-        }
+        connection = sqlite3.connect('example.db')
+        cursor = connection.cursor()
+        
+        form_data = []
+        form_columns = ['proj_id']
+        for thing in request.form: 
+            form_columns.append(thing)
+            form_data.append(request.form[thing])
+
+        query = f'''
+            INSERT INTO projects {tuple(form_columns)}
+            VALUES {tuple(form_data)}
+        '''
+        query2 = f'''SELECT COUNT(*) FROM projects'''
+        cursor.execute(query2)
+        results = cursor.fetchone()[0]
+        connection.commit()
+        connection.close()
         # This requires a database set-up so I can store data. 
         # This may need to wait for the app to be deployed somewhere on the cloud. 
-        print(form_data)
     return redirect('user/home.html')
-
-@app.route('/projects')
-def projects():
-    return render_template('USER/projectS.html')
 
 @app.route('/send_contact', methods=['POST'])
 def send_contact():
