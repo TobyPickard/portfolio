@@ -5,7 +5,6 @@
 
 import sqlite3
 from flask import Flask, render_template, request, redirect
-from sqlalchemy import create_engine
 
 ###############################################################################
 
@@ -77,14 +76,15 @@ def admin_add_project():
 @app.route('/add_project', methods=['POST'])
 def add_project():
     '''
-        This function takes data submitted from the admin/add_project.html file and adds it to the projects table in the database.
+        This function takes data submitted from the admin/add_project.html file 
+        and adds it to the projects table in the database.
     '''
     if request.method == 'POST':
         connection = sqlite3.connect('example.db')
         cursor = connection.cursor()
 
         form_columns = ['id']
-        id_query = f'''SELECT COUNT(*) FROM projects'''
+        id_query = '''SELECT COUNT(*) FROM projects'''
         cursor.execute(id_query)
         form_data = [cursor.fetchone()[0]]
 
@@ -106,7 +106,8 @@ def add_project():
 @app.route('/send_contact', methods=['POST'])
 def send_contact():
     '''
-        This function takes data submitted from the user/contact.html file and sends an automated email. 
+        This function takes data submitted from the user/contact.html file 
+        and sends an automated email. 
     '''
     if request.method == 'POST':
         form_data = {
