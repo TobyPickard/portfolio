@@ -37,21 +37,16 @@ data = [
     )
 ]
 data = {
-    'proj_id':2,
-    'proj_name': 'dict_test'
+    'id':112,
+    'name': 'dict_test'
 }
 
 ###############################################################################
 
-cursor.execute('''
-        INSERT INTO projects ({}) VALUES ({})
-    '''.format(','.join(data.keys()), ','.join(['?'] * len(data))), tuple(data.values())) # pylint: disable=line-too-long 
-
-# for thing in data: 
-#     cursor.execute('''
-#         INSERT INTO projects (proj_id, proj_name, proj_purpose, objective, tech_stack, description, proj_start, proj_end, final_product, gh_link)
-#         VALUES (?,?,?,?,?,?,?,?,?,?)
-# ''', thing)
+# cursor.execute(f'''
+#     INSERT INTO projects ({','.join(data.keys())})
+#     VALUES ({','.join(['?'] * len(data))}) 
+#     {tuple(data.values())}''')
 
 connection.commit()
 connection.close()
