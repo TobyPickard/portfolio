@@ -1,55 +1,94 @@
+'''
+    This is the main function for the portfolio web application
+'''
+###############################################################################
+
 import sqlite3
 from flask import Flask, render_template, request, redirect
 from sqlalchemy import create_engine
 
+###############################################################################
+
 app = Flask(__name__)
+
+###############################################################################
 
 @app.route('/')
 def home():
+    '''
+        This function renders the user/home.html page for the web app.
+    '''
     return render_template('user/home.html')
+
+##=============================================================================
 
 @app.route('/about')
 def about():
+    '''
+        This function renders the user/about.html for the web app.
+    '''
     return render_template('user/about.html')
+
+##=============================================================================
 
 @app.route('/contact')
 def contact():
+    '''
+        This function renders the user/contact.html for the web app.
+    '''
     return render_template('user/contact.html')
+
+##=============================================================================
 
 @app.route('/projects')
 def projects():
+    '''
+        This function renders the user/projects.html for the web app.
+    '''
     connection = sqlite3.connect('example.db')
     cursor = connection.cursor()
+
     query = '''PRAGMA table_info(projects)'''
     cursor.execute(query)
     result = cursor.fetchall()
     column_names = [column[1] for column in result]
+
     query = '''SELECT * from projects'''
     cursor.execute(query)
     projects = cursor.fetchall()
-    
+
     projects_as_list = []
     for project in projects:
         project_dict = {column_names[idx]: i for idx, i in enumerate(project)}
         projects_as_list.append(project_dict)
     return render_template('user/projects.html', data=projects_as_list)
 
+##=============================================================================
+
 @app.route('/admin_add_project')
 def admin_add_project():
+    '''
+        This function renders the admin/add_project.html for the web app.
+    '''
     return render_template('admin/add_project.html')
+
+##=============================================================================
 
 @app.route('/add_project', methods=['POST'])
 def add_project():
+    '''
+        This function takes data submitted from the admin/add_project.html file and adds it to the projects table in the database.
+    '''
     if request.method == 'POST':
         connection = sqlite3.connect('example.db')
         cursor = connection.cursor()
-        
+
         form_columns = ['id']
         id_query = f'''SELECT COUNT(*) FROM projects'''
         cursor.execute(id_query)
         form_data = [cursor.fetchone()[0]]
 
-        for thing in request.form: 
+        for thing in request.form:
             form_columns.append(thing)
             form_data.append(request.form[thing])
 
@@ -62,8 +101,13 @@ def add_project():
         connection.close()
     return redirect('/')
 
+##=============================================================================
+
 @app.route('/send_contact', methods=['POST'])
 def send_contact():
+    '''
+        This function takes data submitted from the user/contact.html file and sends an automated email. 
+    '''
     if request.method == 'POST':
         form_data = {
             'Name': request.form['name'],
@@ -75,6 +119,8 @@ def send_contact():
     # https://www.educative.io/answers/how-to-send-emails-with-api-in-flask-mail
         print(form_data)
     return redirect('user/contact')
+
+##=============================================================================
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=600)
