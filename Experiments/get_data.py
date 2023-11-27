@@ -15,7 +15,7 @@ cursor = connection.cursor()
 cursor.execute('SELECT * from projects')
 rows= cursor.fetchall()
 
-for row in rows: 
+for row in rows:
     print(row)
-    
+
 connection.close()

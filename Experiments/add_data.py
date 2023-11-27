@@ -45,7 +45,7 @@ data = {
 
 # cursor.execute(f'''
 #     INSERT INTO projects ({','.join(data.keys())})
-#     VALUES ({','.join(['?'] * len(data))}) 
+#     VALUES ({','.join(['?'] * len(data))})
 #     {tuple(data.values())}''')
 
 connection.commit()

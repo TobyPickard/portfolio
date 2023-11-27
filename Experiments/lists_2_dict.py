@@ -21,7 +21,7 @@ columns = [
 ]
 
 temp_list = []
-for stuff in data: 
+for stuff in data:
     temp = {columns[idx]: i for idx, i in enumerate(stuff)}
     temp_list.append(temp)
 
