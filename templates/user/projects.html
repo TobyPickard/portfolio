@@ -3,15 +3,24 @@
 {% block content %} 
 <link rel="stylesheet" href="../static/css/sidetabs.css">
 <!-- Side navigation -->
+
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'About')">About</button>
-    <button class="tablinks" onclick="openTab(event, 'Qualifications')">Qualifications</button>
-    <button class="tablinks" onclick="openTab(event, 'Experience')">Experience</button>
+    {% for item in data %}
+        <button class="tablinks" onclick="openTab(event, '{{item.id}}')">{{item.id}}: {{item.name}}</button>
+    {% endfor %}
 </div>
 
 <!-- Put this in a for loop and print all my projects -->
-<div id="About" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England
-</div>
+{% for item in data %}
+    <div id={{item.id}} class="tabcontent">
+            <li>{{item.id}}: {{item.name}}</li>
+            <li>{{item.purpose}}</li>
+            <li>{{item.objective}}</li>
+            <li>{{item.stack}}</li>
+            <li>{{item.start}}</li>
+            <li>{{item.end}}</li>
+            <li>{{item.result}}</li>
+            <li>{{item.github}}</li>
+    </div>
+{% endfor %}
 {% endblock %}
