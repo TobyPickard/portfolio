@@ -73,6 +73,9 @@ def admin_add_project():
 
 @app.route('/admin_edit_project', methods=['POST'])
 def admin_edit_project():
+    '''
+        This function renders the admin/edit_project.html for the web app.
+    '''
     if request.method == 'POST':
         data_as_list = [dict(request.form)]
     return render_template('admin/edit_project.html', data=data_as_list)
@@ -116,7 +119,7 @@ def delete_project():
     if request.method == 'POST':
         connection = sqlite3.connect('example.db')
         cursor = connection.cursor()
-        
+
         project_id = request.form['id']
         query = f'''DELETE from projects where id={project_id}'''
         cursor.execute(query)
@@ -138,7 +141,7 @@ def edit_project():
 
         data = dict(request.form)
         id = data.pop('id')
-        
+
         for k,v in data.items():
             query = f'''UPDATE projects SET {k}=? WHERE id=?'''
             cursor.execute(query, (v, id))
