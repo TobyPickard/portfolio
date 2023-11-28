@@ -71,6 +71,12 @@ def admin_add_project():
     '''
     return render_template('admin/add_project.html')
 
+@app.route('/admin_edit_project', methods=['POST'])
+def admin_edit_project():
+    if request.method == 'POST':
+        data_as_list = [dict(request.form)]
+    return render_template('admin/edit_project.html', data=data_as_list)
+
 ##=============================================================================
 
 @app.route('/add_project', methods=['POST'])
@@ -100,6 +106,46 @@ def add_project():
         connection.commit()
         connection.close()
     return redirect('/')
+
+@app.route('/delete_project', methods=['POST'])
+def delete_project():
+    '''
+        This functions takes the project id and deletes it when requested by 
+        the user.
+    '''
+    if request.method == 'POST':
+        connection = sqlite3.connect('example.db')
+        cursor = connection.cursor()
+        
+        project_id = request.form['id']
+        query = f'''DELETE from projects where id={project_id}'''
+        cursor.execute(query)
+        cursor.execute(f"UPDATE projects SET id = id - 1 WHERE id > ?", (project_id, ))
+
+        connection.commit()
+        connection.close()
+    return redirect('/projects')
+
+@app.route('/edit_project', methods=['POST'])
+def edit_project():
+    '''
+        This function takes data and uses it to update an entry in
+        the projects database.
+    '''
+    if request.method == 'POST':
+        connection = sqlite3.connect('example.db')
+        cursor = connection.cursor()
+
+        data = dict(request.form)
+        id = data.pop('id')
+        
+        for k,v in data.items():
+            query = f'''UPDATE projects SET {k}=? WHERE id=?'''
+            cursor.execute(query, (v, id))
+
+        connection.commit()
+        connection.close()
+    return redirect('/projects')
 
 ##=============================================================================
 
