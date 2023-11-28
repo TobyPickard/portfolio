@@ -54,10 +54,10 @@ def projects():
 
     query = '''SELECT * from projects'''
     cursor.execute(query)
-    projects = cursor.fetchall()
+    project_data = cursor.fetchall()
 
     projects_as_list = []
-    for project in projects:
+    for project in project_data:
         project_dict = {column_names[idx]: i for idx, i in enumerate(project)}
         projects_as_list.append(project_dict)
     return render_template('user/projects.html', data=projects_as_list)
@@ -123,7 +123,7 @@ def delete_project():
         project_id = request.form['id']
         query = f'''DELETE from projects where id={project_id}'''
         cursor.execute(query)
-        cursor.execute(f"UPDATE projects SET id = id - 1 WHERE id > ?", (project_id, ))
+        cursor.execute("UPDATE projects SET id = id - 1 WHERE id > ?", (project_id, ))
 
         connection.commit()
         connection.close()
@@ -140,11 +140,11 @@ def edit_project():
         cursor = connection.cursor()
 
         data = dict(request.form)
-        id = data.pop('id')
+        proj_id = data.pop('id')
 
         for k,v in data.items():
             query = f'''UPDATE projects SET {k}=? WHERE id=?'''
-            cursor.execute(query, (v, id))
+            cursor.execute(query, (v, proj_id))
 
         connection.commit()
         connection.close()
