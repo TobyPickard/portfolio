@@ -56,7 +56,7 @@ def projects():
     result = cursor.fetchall()
     column_names = [column[1] for column in result]
 
-    query = select_query(table_name='projects')
+    query = select_query(table_name='projects', column_names=['*'])
     cursor.execute(query)
     project_data = cursor.fetchall()
 
@@ -97,7 +97,7 @@ def add_project():
         cursor = connection.cursor()
 
         form_columns = ['id']
-        id_query = select_query(table_name='projects', count=True)
+        id_query = select_query(table_name='projects', column_names=['*'], count=True)
         cursor.execute(id_query)
         form_data = [cursor.fetchone()[0]]
 
