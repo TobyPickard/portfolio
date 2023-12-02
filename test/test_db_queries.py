@@ -26,7 +26,7 @@ class TestingQueryFormer(TestCase):
         '''
             er
         '''
-        self.assertEqual(select_query('test'), 'SELECT * FROM test')
+        self.assertEqual(select_query('test', ['*']), 'SELECT * FROM test')
 
     def test_select_query_specified_columns(self):
         '''
