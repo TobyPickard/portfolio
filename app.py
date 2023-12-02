@@ -6,7 +6,7 @@
 import sqlite3
 from flask import Flask, render_template, request, redirect
 
-from src.operators.operators import ComparisonOperators, Operators
+from src.operators.operators import ComparisonOperators
 from src.db_queries import pragma_query, select_query, insert_query, \
     update_query, delete_query
 
@@ -151,11 +151,11 @@ def edit_project():
 
         data = dict(request.form)
         proj_id = data.pop('id')
-        
+
         cursor.execute(
             update_query(
                 'projects', 
-                data, 
+                data,
                 'id',
                 ComparisonOperators.EQUAL
             ),

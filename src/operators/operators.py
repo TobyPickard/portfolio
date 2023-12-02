@@ -1,9 +1,18 @@
-from enum import Enum
+'''
+    tyhrgtfedw
+'''
+###############################################################################
 
-class Operators: 
+class Operators:
+    '''
+        errfe
+    '''
     pass
 
 class OtherOperators(Operators):
+    '''
+        weedw
+    '''
     LIKE = 'LIKE'
     IN = 'IN'
     BETWEEN = 'BETWEEN'
@@ -11,6 +20,9 @@ class OtherOperators(Operators):
     NOT_NULL = 'IS NOT NULL'
 
 class ComparisonOperators(Operators):
+    '''
+        wrfewrf
+    '''
     EQUAL = '='
     NOTEQUAL = '!='
     LESSTHAN = '<'
@@ -19,6 +31,9 @@ class ComparisonOperators(Operators):
     MORETHANOREQUAL = '>='
 
 class LogicalOperators(Operators):
+    '''
+        ewfrgferg
+    '''
     AND = 'AND'
     OR = 'OR'
     NOT = 'NOT'
