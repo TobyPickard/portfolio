@@ -19,8 +19,8 @@ def pragma_query(table_name: str) -> str:
 
 def select_query(
         table_name: str,
-        count: Optional[bool]=False,
-        column_names: Optional[List[str]]=['*']) \
+        column_names: Optional[List[str]],
+        count: Optional[bool]=False) \
         -> str:
     '''
         fefq

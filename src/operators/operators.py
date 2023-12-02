@@ -12,7 +12,6 @@ class Operators:
     '''
         errfe
     '''
-    pass
 
 @dataclass
 class OtherOperators(Operators):
