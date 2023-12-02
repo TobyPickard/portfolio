@@ -6,6 +6,10 @@
 import sqlite3
 from flask import Flask, render_template, request, redirect
 
+from src.operators.operators import ComparisonOperators, Operators
+from src.db_queries import pragma_query, select_query, insert_query, \
+    update_query, delete_query
+
 ###############################################################################
 
 app = Flask(__name__)
@@ -47,12 +51,12 @@ def projects():
     connection = sqlite3.connect('example.db')
     cursor = connection.cursor()
 
-    query = '''PRAGMA table_info(projects)'''
+    query = pragma_query('projects')
     cursor.execute(query)
     result = cursor.fetchall()
     column_names = [column[1] for column in result]
 
-    query = '''SELECT * from projects'''
+    query = select_query(table_name='projects')
     cursor.execute(query)
     project_data = cursor.fetchall()
 
@@ -93,7 +97,7 @@ def add_project():
         cursor = connection.cursor()
 
         form_columns = ['id']
-        id_query = '''SELECT COUNT(*) FROM projects'''
+        id_query = select_query(table_name='projects', count=True)
         cursor.execute(id_query)
         form_data = [cursor.fetchone()[0]]
 
@@ -101,11 +105,9 @@ def add_project():
             form_columns.append(thing)
             form_data.append(request.form[thing])
 
-        query = f'''
-            INSERT INTO projects {tuple(form_columns)}
-            VALUES {tuple(form_data)}
-        '''
+        query = insert_query('projects', form_columns, form_data)
         cursor.execute(query)
+
         connection.commit()
         connection.close()
     return redirect('/')
@@ -121,9 +123,17 @@ def delete_project():
         cursor = connection.cursor()
 
         project_id = request.form['id']
-        query = f'''DELETE from projects where id={project_id}'''
-        cursor.execute(query)
-        cursor.execute("UPDATE projects SET id = id - 1 WHERE id > ?", (project_id, ))
+
+        cursor.execute(delete_query('projects', project_id, 'id'))
+        cursor.execute(
+            update_query(
+                'projects',
+                {'id': 'id-1'},
+                'id',
+                ComparisonOperators.MORETHAN
+            ),
+            (project_id)
+        )
 
         connection.commit()
         connection.close()
@@ -141,10 +151,16 @@ def edit_project():
 
         data = dict(request.form)
         proj_id = data.pop('id')
-
-        for k,v in data.items():
-            query = f'''UPDATE projects SET {k}=? WHERE id=?'''
-            cursor.execute(query, (v, proj_id))
+        
+        cursor.execute(
+            update_query(
+                'projects', 
+                data, 
+                'id',
+                ComparisonOperators.EQUAL
+            ),
+            (proj_id)
+        )
 
         connection.commit()
         connection.close()

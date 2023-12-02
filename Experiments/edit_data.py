@@ -6,13 +6,13 @@ import sqlite3
 
 data = {
     'id': '1',
-    'name': '.vefve',
+    'name': 'dgvh ',
     'purpose': '',
     'objective': '',
     'stack': '',
     'start': '',
     'end': '',
-    'github': '',
+    'github': 'haha',
     'result': 'boobies'
 }
 
@@ -21,10 +21,11 @@ my_id = data.pop('id')
 connection = sqlite3.connect('example.db')
 cursor = connection.cursor()
 
+test = ', '.join(f'{k}="{v}"' for k,v in data.items())
 
 for k,v in data.items():
-    query = f'''UPDATE projects SET {k}=? WHERE id=?'''
-    cursor.execute(query, (v, my_id))
+    query = f'''UPDATE projects SET {test} WHERE id=?'''
+    cursor.execute(query, (my_id))
     print(query)
 
 connection.commit()
