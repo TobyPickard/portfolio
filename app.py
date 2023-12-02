@@ -6,7 +6,7 @@
 import sqlite3
 from flask import Flask, render_template, request, redirect
 
-from src.operators.operators import ComparisonOperators
+from src.classes.operators import ComparisonOperators
 from src.db_queries import pragma_query, select_query, insert_query, \
     update_query, delete_query
 

@@ -6,7 +6,7 @@
 from unittest import TestCase
 
 from src.db_queries import pragma_query, select_query, delete_query, update_query, insert_query
-from src.operators.operators import ComparisonOperators
+from src.classes.operators import ComparisonOperators
 
 ###############################################################################
 

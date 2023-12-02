@@ -5,7 +5,7 @@
 
 from typing import List, Optional, Dict, Any
 
-from src.operators.operators import Operators
+from src.classes.operators import Operators
 
 ###############################################################################
 
