@@ -21,10 +21,10 @@ my_id = data.pop('id')
 connection = sqlite3.connect('example.db')
 cursor = connection.cursor()
 
-test_something = ', '.join(f'{k}="{v}"' for k,v in data.items())
+TEST = ', '.join(f'{k}="{v}"' for k,v in data.items())
 
 for k,v in data.items():
-    query = f'''UPDATE projects SET {test} WHERE id=?'''
+    query = f'''UPDATE projects SET {TEST} WHERE id=?'''
     cursor.execute(query, (my_id))
     print(query)
 
