@@ -42,7 +42,7 @@ class TestingQueryFormer(TestCase):
             er
         '''
         self.assertEqual(
-            select_query('test', True),
+            select_query('test', ['*'], True),
             'SELECT COUNT(*) FROM test')
 
     # Update query tests
@@ -52,7 +52,7 @@ class TestingQueryFormer(TestCase):
         '''
         self.assertEqual(
             update_query('test', {'this':'that'}, 'that', ComparisonOperators.EQUAL),
-            'UPDATE test SET this="that" WHERE that=?'
+            'UPDATE test SET this=\'that\' WHERE that=?'
         )
 
     def test_update_query_multiple_values(self):
@@ -64,7 +64,7 @@ class TestingQueryFormer(TestCase):
                 'test',
                 {'this':'that','this2':'that2','this3':'that3'},
                 'that', ComparisonOperators.MORETHAN),
-            'UPDATE test SET this="that", this2="that2", this3="that3" WHERE that>?'
+            'UPDATE test SET this=\'that\', this2=\'that2\', this3=\'that3\' WHERE that>?'
         )
 
     def test_update_query_stringupdates(self):
@@ -73,7 +73,7 @@ class TestingQueryFormer(TestCase):
         '''
         self.assertEqual(
             update_query('test', {'id': 'id-1'}, 'that', ComparisonOperators.MORETHAN),
-            'UPDATE test SET id="id-1" WHERE that>?'
+            'UPDATE test SET id=\'id-1\' WHERE that>?'
         )
 
     # Delete query tests
