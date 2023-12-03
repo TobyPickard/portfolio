@@ -8,6 +8,10 @@
     {% for item in data %}
         <button class="tablinks" onclick="openTab(event, '{{item.id}}')">{{item.id}}: {{item.name}}</button>
     {% endfor %}
+    <!-- <button class="tablinks" onclick="openTab(event, 'test')">+Add Project</button> -->
+    <a href="{{ url_for('admin_add_project')}}" style="text-decoration:none">
+        <button class="tablinks"> +Add Project</button>
+    </a>
 </div>
 
 <!-- Put this in a for loop and print all my projects -->
