@@ -19,7 +19,7 @@ def pragma_query(table_name: str) -> str:
 
 def select_query(
         table_name: str,
-        column_names: Optional[List[str]],
+        column_names: List[str],
         count: Optional[bool]=False) \
         -> str:
     '''
