@@ -17,10 +17,13 @@
 <!-- Put this in a for loop and print all my projects -->
 {% for item in data %}
     <div id={{item.id}} class="tabcontent">
-        <li>{{item.id}}: {{item.name}}</li>
+        <h1>{{ item.id }}: {{ item.name }}</h1>
+        <p>Tech stack: {{ item.stack }}</p>
+        <p>{{ item.start }} - {{ item.end }} ({{ item.duration }})</p>
+
+
         <li>{{item.purpose}}</li>
         <li>{{item.objective}}</li>
-        <li>{{item.stack}}</li>
         <li>{{item.start}}</li>
         <li>{{item.end}}</li>
         <li>{{item.result}}</li>
