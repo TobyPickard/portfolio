@@ -1,43 +1,37 @@
 // Sidebar.js
-import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
-import './Sidebar.css'; // Import your sidebar styling
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
+import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
+import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded';
+import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { useState } from 'react';
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const AppSidebar = () => {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+  const toggleSideBar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed)
   };
 
-  return (
-    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-        <button onClick={toggleSidebar}>Toggle Sidebar</button>
-        {isOpen ? (
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/projects">Projects</Link></li>
-                    <li><Link to="/add">Add</Link></li>
-                    <li><Link to="/edit">Edit</Link></li>
-                </ul>
-            ) : null
-        }
-        
-        {/* { isOpen ? (
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/projects">Projects</Link></li>
-                    <li><Link to="/add">Add</Link></li>
-                    <li><Link to="/edit">Edit</Link></li>
-                </ul>
-            );
-        }; */}
-    </div>
-  );
+  return <Sidebar collapsed={isSidebarCollapsed} className="app">
+      <Menu>
+        <MenuItem onClick={toggleSideBar} className="menu1" icon={<MenuRoundedIcon />} />
+        <MenuItem component={ <Link to="/" /> } icon={<HomeRoundedIcon />}> Home </MenuItem>
+        <MenuItem component={ <Link to="/about" /> } icon={<GridViewRoundedIcon />}> About </MenuItem>
+        <MenuItem component={ <Link to="/contact" /> } icon={<ImportContactsRoundedIcon />}> Contact </MenuItem>
+        <SubMenu label="Projects" component={ <Link to="/list-projects" /> } icon={<CodeRoundedIcon />}>
+          <MenuItem component={ <Link to="/proj1" /> } icon={<TimelineRoundedIcon />}> Timeline Chart </MenuItem>
+          <MenuItem component={ <Link to="/proj2" /> } icon={<BubbleChartRoundedIcon />}>Bubble Chart</MenuItem>
+        </SubMenu>
+        <MenuItem component={ <Link to="/logout" /> } icon={<LogoutRoundedIcon />}> Logout </MenuItem>
+      </Menu>
+    </Sidebar>
 };
 
-export default Sidebar;
+export default AppSidebar;
