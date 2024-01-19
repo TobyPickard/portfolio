@@ -1,13 +1,35 @@
 // Projects.js
+import { useState } from "react";
+import AddButton from "../Components/AddButton";
+import AddProject from "./AddProject";
+import ListProject from "./ListProject";
 
 const Projects = () => {
-    return (
-      <div>
-        <h1>Projects Page</h1>
-        {/* Add content for the Projects page */}
-      </div>
-    );
+  let content
+
+  const [step, setStep] = useState(0);
+  console.log(step)
+  
+  const nextStep = () => {
+    setStep(step + 1);
   };
-  
-  export default Projects;
-  
+  const addPage = () => {
+    setStep(1);
+  }
+
+  switch (step) {
+    case 0:
+      content = <ListProject />
+      break
+    case 1:
+      content = <AddProject />
+      break
+  }
+  return (
+    <div>
+      {content}
+      <AddButton onClick={addPage}/>
+    </div>
+  );
+};
+export default Projects;

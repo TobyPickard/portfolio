@@ -25,9 +25,9 @@ const AppSidebar = () => {
         <MenuItem component={ <Link to="/" /> } icon={<HomeRoundedIcon />}> Home </MenuItem>
         <MenuItem component={ <Link to="/about" /> } icon={<GridViewRoundedIcon />}> About </MenuItem>
         <MenuItem component={ <Link to="/contact" /> } icon={<ImportContactsRoundedIcon />}> Contact </MenuItem>
-        <SubMenu label="Projects" component={ <Link to="/list-projects" /> } icon={<CodeRoundedIcon />}>
-          <MenuItem component={ <Link to="/proj1" /> } icon={<TimelineRoundedIcon />}> Timeline Chart </MenuItem>
-          <MenuItem component={ <Link to="/proj2" /> } icon={<BubbleChartRoundedIcon />}>Bubble Chart</MenuItem>
+        <SubMenu label="Projects" component={ <Link to="/projects" /> } icon={<CodeRoundedIcon />}>
+          <MenuItem icon={<TimelineRoundedIcon />}>Timeline Chart</MenuItem>
+          <MenuItem icon={<BubbleChartRoundedIcon />}>Bubble Chart</MenuItem>
         </SubMenu>
         <MenuItem component={ <Link to="/logout" /> } icon={<LogoutRoundedIcon />}> Logout </MenuItem>
       </Menu>

@@ -2,7 +2,12 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { FormControl, Select, MenuItem } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import InstagramIcon from '@mui/icons-material/Instagram'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import { FormControl, Select, MenuItem, Autocomplete } from '@mui/material';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
 const Contact = () => {
@@ -24,54 +29,75 @@ const Contact = () => {
 
     console.log(formData)
   }
+
+  const relations = [
+    {relation: 'Family/Friend'},
+    {relation: 'Current/Former Colleague'},
+    {relation: 'Work Opportunity'}
+  ]
+
   return (
     <div>
       <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
         <h2>Get in touch...</h2>
       </div>
-      <Stack spacing={6}>
-        <form onSubmit={handleSubmit}>
-          <FormControl sx={{ display:'flex', alignItems:'center' }}>
-            <TextField 
-              name= 'fullname' 
-              label='Fullname' 
-              variant='outlined' 
-              style={{ marginBottom: '16px', width: '500px' }} 
-              onChange={handleChange} 
-            />
-            <Select 
-              label='Relation'
-              name='relation'
-              onChange={handleChange}
-              style={{ marginBottom: '16px', width: '500px' }}
-            >
-              <MenuItem value='Test'>Family/Friends</MenuItem>
-              <MenuItem value='Test2'>Colleague</MenuItem>
-              <MenuItem value='Test3'>Former Colleague</MenuItem>
-            </Select>
-            <TextField 
-              name= 'message' 
-              label='Message' 
-              variant='outlined' 
-              style={{ marginBottom: '16px', width: '500px' }} 
-              multiline rows={10} 
-              onChange={handleChange}
-            />
-            <Button type='submit' variant='contained' color='primary'>Submit</Button>
-          </FormControl>
-        </form>
-      </Stack>
+      <div style={{ width: '500px' }}>
+        <Stack spacing={6}>
+          <form onSubmit={handleSubmit}>
+            <FormControl sx={{ display:'flex', alignItems:'center' }}>
+              <TextField 
+                name= 'fullname' 
+                label='Fullname' 
+                variant='outlined' 
+                style={{ marginBottom: '16px', width: '500px' }} 
+                onChange={handleChange} 
+              />
+              <Autocomplete
+                id="tags-outlined"
+                options={relations}
+                getOptionLabel={(option) => option.relation}
+                filterSelectedOptions
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Relationship..."
+                  />
+                )}
+                onChange={handleChange}
+                style={{ marginBottom: '16px', width: '500px' }} 
+              />
+              <TextField 
+                name= 'message' 
+                label='Message' 
+                variant='outlined' 
+                style={{ marginBottom: '16px', width: '500px' }} 
+                multiline rows={10} 
+                onChange={handleChange}
+              />
+              <Button type='submit' variant='contained' color='primary'>Submit</Button>
+            </FormControl>
+          </form>
+        </Stack>
+      </div>
 
-      {/* <h2>Social media (NEED TO ADD IN ICONS WITH LINKS)</h2> */}
-
-      
-
-      {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <a href="https://www.linkedin.com/in/toby-pickard-84bb53175" className="fa fa-linkedin"></a>
-        <a href="https://www.facebook.com/toby.pickard" className="fa fa-facebook"></a>
-        <a href="https://www.instagram.com/tobypickard" className="fa fa-instagram"></a>
-        <a href="https://github.com/TobyPickard" className="fa fa-github"></a>
-      </div> */}
+      <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
+        <h2>Connect With me...</h2>
+      </div>
+      <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
+        
+        <IconButton  aria-label='Github' href='https://github.com/TobyPickard' target='_blank' rel='noopener noreferrer'>
+          <GitHubIcon style={{fontSize: 40}} />
+        </IconButton>
+        <IconButton  aria-label='LinkedIn' href='https://www.linkedin.com/in/toby-pickard-84bb53175' target='_blank' rel='noopener noreferrer'>
+          <LinkedInIcon style={{fontSize: 40}} />
+        </IconButton>
+        <IconButton  aria-label='Facebook' href='https://www.facebook.com/toby.pickard' target='_blank' rel='noopener noreferrer'>
+          <FacebookIcon style={{fontSize: 40}} />
+        </IconButton>
+        <IconButton  aria-label='Instagram' href='https://www.instagram.com/tobypickard' target='_blank' rel='noopener noreferrer'>
+          <InstagramIcon style={{fontSize: 40}} />
+        </IconButton>
+      </div>
     </div>
   );
 };
