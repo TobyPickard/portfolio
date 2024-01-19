@@ -7,7 +7,7 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import FacebookIcon from '@mui/icons-material/Facebook'
-import { FormControl, Select, MenuItem, Autocomplete } from '@mui/material';
+import { FormControl, Autocomplete } from '@mui/material';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
 const Contact = () => {
@@ -18,10 +18,17 @@ const Contact = () => {
   })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.innerText != '') {
+      setFormData({
+        ...formData,
+        relation: e.target.innerText,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -56,7 +63,6 @@ const Contact = () => {
                 id="tags-outlined"
                 options={relations}
                 getOptionLabel={(option) => option.relation}
-                filterSelectedOptions
                 renderInput={(params) => (
                   <TextField
                     {...params}
