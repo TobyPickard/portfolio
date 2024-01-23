@@ -8,7 +8,6 @@ const Projects = () => {
   let content
 
   const [step, setStep] = useState(0);
-  console.log(step)
   
   const nextStep = () => {
     setStep(step + 1);

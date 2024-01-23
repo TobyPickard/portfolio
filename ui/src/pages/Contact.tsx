@@ -10,14 +10,19 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 import { FormControl, Autocomplete } from '@mui/material';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
+interface FormData {
+  fullname: string;
+  relation: string;
+  message: string;
+}
 const Contact = () => {
-  const [formData, setFormData] = useState<FormEvent>({
+  const [formData, setFormData] = useState<FormData>({
     fullname: '',
     relation: '',
     message: ''
   })
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.target.innerText != '') {
       setFormData({
         ...formData,

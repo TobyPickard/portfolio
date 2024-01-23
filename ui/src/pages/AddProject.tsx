@@ -3,18 +3,30 @@
 import { Autocomplete, Button, FormControl, Stack, TextField } from "@mui/material";
 import { useState, FormEvent, ChangeEvent } from "react";
 
+interface FormData {
+  project: string;
+  github: string;
+  objective: string;
+  tech: string[];
+}
 const AddProject = () => {
-  const [formData, setFormData] = useState<FormEvent>({
+  const [formData, setFormData] = useState<FormData>({
     project: '',
     github: '',
-    objective: ''
+    objective: '',
+    tech: []
   })
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // console.log(e)
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
-    });
+      tech: [...formData.tech, e.target.innerText]
+    })
+    // setFormData({
+    //   ...formData,
+    //   [e.target.name]: e.target.value,
+    // });
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -22,9 +34,6 @@ const AddProject = () => {
 
     console.log(formData)
   }
-  const handleStartDateChange = (date) => {
-    setStartDate(date);
-  };
 
   const techStack = [
     {name: 'Java'},
@@ -78,6 +87,7 @@ const AddProject = () => {
               label='Project Objective....'
               variant='outlined'
               style={{ marginBottom: '16px', width: '500px' }} 
+              multiline rows={10}
               onChange={handleChange}
             />
             <Button type='submit' variant='contained' color='primary'>Submit</Button>
