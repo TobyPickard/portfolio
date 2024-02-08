@@ -5,13 +5,10 @@ import AddProject from "./AddProject";
 import ListProject from "./ListProject";
 
 const Projects = () => {
-  let content
+  let content;
 
   const [step, setStep] = useState(0);
-  
-  const nextStep = () => {
-    setStep(step + 1);
-  };
+
   const addPage = () => {
     setStep(1);
   }
