@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogTitle, TextField } from "@material-ui/core";
-import { Autocomplete, Button, Chip, DialogActions, Divider, Grid } from "@mui/material";
+import { Autocomplete, Button, Chip, DialogActions, Divider, Grid, Typography } from "@mui/material";
 import { useState  } from "react";
 
 const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, deleteProj, editProj }) => {
@@ -43,7 +43,7 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, delet
 
     const handleEditSubmit = () => {
         setIsEditDialog(false);
-        editProj(project, newProject)
+        editProj(newProject)
     }
 
     const handleDialogClose = () => {
@@ -131,9 +131,10 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, delet
                                 name='description'
                                 variant='outlined'
                                 fullWidth
+                                multiline
                                 onChange={handleChange}
                                 defaultValue={project.description}
-                                style={{ marginTop: '15px' }} 
+                                style={{ marginTop: '15px', marginBottom: '15px' }} 
                             />
                         </Grid>
                     </Grid>
@@ -170,7 +171,11 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, delet
     case false:
         return (
             <Dialog open={open} onClose={onClose} fullWidth={true}>
-                <DialogTitle>{project.name}</DialogTitle>
+                <DialogTitle>
+                    <Typography noWrap variant="h3">
+                        {project.name}
+                    </Typography>
+                </DialogTitle>
                 <DialogContent>
                     <Grid container spacing={2}>
                         <Grid item xs={3}>
@@ -188,7 +193,9 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, delet
                             <p>Github: </p>
                         </Grid>
                         <Grid item xs={6}>
-                            <p>{project.github}</p>
+                            <Typography variant="h6" style={{ marginTop:"30px" }}>
+                                {project.github}
+                            </Typography>
                         </Grid>
                     </Grid>
                     <Divider />
@@ -197,7 +204,9 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, delet
                             <p>Objective: </p>
                         </Grid>
                         <Grid item xs={6}>
-                            <p>{project.description}</p>
+                            <Typography variant="h6" style={{ marginTop:"30px", marginBottom:"30px" }}>
+                                {project.description}
+                            </Typography>
                         </Grid>
                     </Grid>
                     <Divider />

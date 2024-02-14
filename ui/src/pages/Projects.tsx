@@ -3,7 +3,6 @@ import { useState } from "react";
 import AddButton from "../Components/AddButton";
 import AddProject from "./AddProject";
 import ListProject from "./ListProject";
-import EditProject from "./EditProject";
 
 const Projects = () => {
   let content;

@@ -2,7 +2,7 @@ import { Card, CardActionArea, CardContent, Chip, Grid, Typography } from "@mui/
 import { useState  } from "react";
 import ProjectDialog from "../Components/ProjectDialog"
 
-const ListProject = () => {
+const ListProject = ({}) => {
   const [project, setProject] = useState({id:0, description:'', stack:'', github:'', objective:'', status:''});
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -21,8 +21,8 @@ const ListProject = () => {
 
   const [projects, setProjects] = useState(InitialProjects)
 
-  const handleCardClick = (test) => {
-    setProject(test)
+  const handleCardClick = (card) => {
+    setProject(card)
     setIsDialogOpen(true);
   }
 
@@ -30,13 +30,13 @@ const ListProject = () => {
     setIsDialogOpen(false);
   }
 
-  const handleDeleteProj = (projname) => {
-    const newList = projects.filter((item) => item.name !== projname);
+  const handleDeleteProj = (projName) => {
+    const newList = projects.filter((item) => item.name !== projName);
     setProjects(newList)
     handleCloseDialog()
   }
 
-  const handleEditProj = (project, newProject) => {
+  const handleEditProj = (newProject) => {
     const newProjects = projects.map(item => {
       if (item.id === newProject.id) {
         return newProject;
@@ -57,13 +57,13 @@ const ListProject = () => {
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea onClick={() => handleCardClick(card)}>
                 <CardContent>
-                  <Typography gutterBottom id={card.id} variant="h3" component="div">
+                  <Typography id={card.id} variant="h3" component="div">
                     {card.name}
                   </Typography>
                   {card.stack.split(",").map((tech) => (
                       <Chip label={tech} />
                   ))}
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" color="text.secondary" noWrap>
                     {card.description}
                   </Typography>
                 </CardContent>
