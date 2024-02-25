@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogTitle, TextField } from "@material-ui/core";
 import { Autocomplete, Button, Chip, DialogActions, Divider, Grid, Typography } from "@mui/material";
 import { useState  } from "react";
+import { Link } from "react-router-dom";
 
 const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, deleteProj, editProj }) => {
     const [isEditDialog, setIsEditDialog] = useState(false);
@@ -194,7 +195,7 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose, delet
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h6" style={{ marginTop:"30px" }}>
-                                {project.github}
+                                <Link to={project.github}>{project.github}</Link>
                             </Typography>
                         </Grid>
                     </Grid>

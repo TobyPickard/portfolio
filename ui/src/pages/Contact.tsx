@@ -49,14 +49,14 @@ const Contact = () => {
   ]
 
   return (
-    <div>
+    <div style={{ paddingBottom: '50px' }}>
       <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
         <h2>Get in touch...</h2>
       </div>
-      <div style={{ width: '500px' }}>
+      <div style={{ display: 'grid', placeItems: 'center' }}>
         <Stack spacing={6}>
           <form onSubmit={handleSubmit}>
-            <FormControl sx={{ display:'flex', alignItems:'center' }}>
+            <FormControl>
               <TextField 
                 name= 'fullname' 
                 label='Fullname' 
@@ -91,7 +91,7 @@ const Contact = () => {
         </Stack>
       </div>
 
-      <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
+      {/* <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
         <h2>Connect With me...</h2>
       </div>
       <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
@@ -108,7 +108,7 @@ const Contact = () => {
         <IconButton  aria-label='Instagram' href='https://www.instagram.com/tobypickard' target='_blank' rel='noopener noreferrer'>
           <InstagramIcon style={{fontSize: 40}} />
         </IconButton>
-      </div>
+      </div> */}
     </div>
   );
 };

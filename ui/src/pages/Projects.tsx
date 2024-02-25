@@ -1,6 +1,6 @@
 // Projects.js
 import { useState } from "react";
-import AddButton from "../Components/AddButton";
+import AddProjectButton from "../Components/AddProjectButton";
 import AddProject from "./AddProject";
 import ListProject from "./ListProject";
 
@@ -24,7 +24,7 @@ const Projects = () => {
   return (
     <div>
       {content}
-      <AddButton onClick={addPage} />
+      {/* <AddProjectButton/> */}
     </div>
     
   );
