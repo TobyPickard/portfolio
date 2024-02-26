@@ -49,7 +49,7 @@ const Contact = () => {
   ]
 
   return (
-    <div style={{ paddingBottom: '50px' }}>
+    <div id='contact' style={{ paddingBottom: '50px' }}>
       <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
         <h2>Get in touch...</h2>
       </div>

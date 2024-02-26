@@ -4,6 +4,13 @@ import { AppBar, Toolbar, Typography, useScrollTrigger, Slide, Button } from '@m
 const TopNavbar = () => {
   const trigger = useScrollTrigger();
 
+  const handleClick = (component) => {
+    const element = document.getElementById(component);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar>
@@ -12,11 +19,17 @@ const TopNavbar = () => {
             Toby Pickard
           </Typography>
           {/* Add additional items such as buttons, links, or icons here */}
-          <Button style={{color: 'white'}}>
-            Test
+          <Button onClick={() => handleClick('home')} style={{color: 'white'}}>
+            Home
           </Button>
-          <Button style={{color: 'white'}}>
-            Test
+          <Button onClick={() => handleClick('about')} style={{color: 'white'}}>
+            About
+          </Button>
+          <Button onClick={() => handleClick('projects')} style={{color: 'white'}}>
+            Projects
+          </Button>
+          <Button onClick={() => handleClick('contact')} style={{color: 'white'}}>
+            Contact
           </Button>
         </Toolbar>
       </AppBar>

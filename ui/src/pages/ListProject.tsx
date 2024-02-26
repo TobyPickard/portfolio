@@ -54,12 +54,12 @@ const ListProject = () => {
   }
 
   return (
-    <div style={{ backgroundColor: 'lightblue' }}>
+    <div style={{ backgroundColor: 'lightblue' }} id="projects">
       <div style={{display:'flex', justifyContent: 'center', alignItems:'center'}}>
         <h1>Projects</h1>
       </div>
       {/* Add content for the Add page */}
-      <Grid container rowSpacing={2} columnSpacing={2}>
+      <Grid container>
         {projects.map((card) => (
           <Grid item key={card.id} xs={12} >
             <div style={{ display: 'grid', placeItems: 'center', paddingBottom: '50px' }}>

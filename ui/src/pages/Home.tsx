@@ -2,6 +2,7 @@
 
 import Footer from "../Components/Footer";
 import TopNavbar from "../Components/Navbar";
+import About from "./About";
 import Contact from "./Contact";
 import Projects from "./Projects";
 
@@ -10,7 +11,7 @@ const Home = () => {
     <div>
       <TopNavbar />
       <h1 style={{ paddingTop: '50px', display:'flex', justifyContent: 'center', alignItems:'center'}}>Hello</h1>
-      
+      <About />
       <Projects />
       <Contact />
       
