@@ -4,15 +4,16 @@ import Footer from "../Components/Footer";
 import TopNavbar from "../Components/Navbar";
 import About from "./About";
 import Contact from "./Contact";
-import Projects from "./Projects";
+import ListProjects from "./ListProject";
+import Hello from "./Hello";
 
 const Home = () => {
   return (
     <div>
       <TopNavbar />
-      <h1 style={{ paddingTop: '50px', display:'flex', justifyContent: 'center', alignItems:'center'}}>Hello</h1>
+      <Hello />
       <About />
-      <Projects />
+      <ListProjects />
       <Contact />
       
       {/* Add content for the Home page */}

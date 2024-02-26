@@ -2,11 +2,6 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import IconButton from '@mui/material/IconButton';
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import FacebookIcon from '@mui/icons-material/Facebook'
 import { FormControl, Autocomplete } from '@mui/material';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
@@ -90,25 +85,6 @@ const Contact = () => {
           </form>
         </Stack>
       </div>
-
-      {/* <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
-        <h2>Connect With me...</h2>
-      </div>
-      <div style={{ display:'flex', justifyContent: 'center', alignItems:'center' }}>
-        
-        <IconButton  aria-label='Github' href='https://github.com/TobyPickard' target='_blank' rel='noopener noreferrer'>
-          <GitHubIcon style={{fontSize: 40}} />
-        </IconButton>
-        <IconButton  aria-label='LinkedIn' href='https://www.linkedin.com/in/toby-pickard-84bb53175' target='_blank' rel='noopener noreferrer'>
-          <LinkedInIcon style={{fontSize: 40}} />
-        </IconButton>
-        <IconButton  aria-label='Facebook' href='https://www.facebook.com/toby.pickard' target='_blank' rel='noopener noreferrer'>
-          <FacebookIcon style={{fontSize: 40}} />
-        </IconButton>
-        <IconButton  aria-label='Instagram' href='https://www.instagram.com/tobypickard' target='_blank' rel='noopener noreferrer'>
-          <InstagramIcon style={{fontSize: 40}} />
-        </IconButton>
-      </div> */}
     </div>
   );
 };

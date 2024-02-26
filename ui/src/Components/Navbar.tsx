@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, useScrollTrigger, Slide, Button } from '@mui/material';
+import { AppBar, Toolbar, Typography, useScrollTrigger, Slide, Button, Link } from '@mui/material';
 
 const TopNavbar = () => {
   const trigger = useScrollTrigger();
@@ -16,10 +16,9 @@ const TopNavbar = () => {
       <AppBar>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Toby Pickard
+            <a href='/' style={{color: 'white'}}>Toby Pickard</ a>
           </Typography>
-          {/* Add additional items such as buttons, links, or icons here */}
-          <Button onClick={() => handleClick('home')} style={{color: 'white'}}>
+          <Button href='/' style={{color: 'white'}}>
             Home
           </Button>
           <Button onClick={() => handleClick('about')} style={{color: 'white'}}>

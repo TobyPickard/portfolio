@@ -7,20 +7,10 @@ const ListProject = () => {
   const [project, setProject] = useState({id:0, description:'', stack:'', github:'', objective:'', status:''});
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const InitialProjects =[
+  const projects =[
     {id:0, name: 'Portfolio', description: 'This is a project to make a web application to personal portfolio.', stack: 'Python,React.js,AWS', github: 'https://github.com/TobyPickard/portfolio.git', status: 'Complete'},
     {id:1, name: 'proj1', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'In Progress'},
-  //   {id:2, name: 'proj2', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'},
-  //   {id:3, name: 'proj3', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'},
-  //   {id:4, name: 'proj4', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'},
-  //   {id:5, name: 'proj5', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'},
-  //   {id:6, name: 'proj6', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'},
-  //   {id:7, name: 'proj7', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'},
-  //   {id:8, name: 'proj8', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'},
-  //   {id:9, name: 'proj9', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'Complete'}
   ]
-
-  const [projects, setProjects] = useState(InitialProjects)
 
   const handleCardClick = (card) => {
     setProject(card)
@@ -29,28 +19,6 @@ const ListProject = () => {
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
-    console.log('howdy')
-  }
-
-  const handleAddProject = () => {
-    console.log(projects)
-  }
-
-  const handleDeleteProj = (projName) => {
-    const newList = projects.filter((item) => item.name !== projName);
-    setProjects(newList)
-    handleCloseDialog()
-  }
-
-  const handleEditProj = (newProject) => {
-    const newProjects = projects.map(item => {
-      if (item.id === newProject.id) {
-        return newProject;
-      }
-      return item;
-    })
-    setProjects(newProjects);
-    handleCloseDialog()
   }
 
   return (
@@ -82,8 +50,7 @@ const ListProject = () => {
           </Grid>
         ))}
       </Grid>
-      <ProjectDialog project={project} open={isDialogOpen} onClose={handleCloseDialog} deleteProj={handleDeleteProj} editProj={handleEditProj}/>
-      {/* <AddProjectButton addProject={handleCloseDialog} /> */}
+      <ProjectDialog project={project} open={isDialogOpen} onClose={handleCloseDialog}/>
     </div>
   );
 };
