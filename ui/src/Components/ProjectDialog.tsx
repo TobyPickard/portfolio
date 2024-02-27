@@ -1,8 +1,8 @@
 import { Dialog, DialogContent, DialogTitle } from "@material-ui/core";
 import { Button, Chip, DialogActions, Divider, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import ProjectDialogProps from "../Interfaces/ProjectDialogProps";
 
-const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose }) => {
+const ProjectDialog: React.FC<ProjectDialogProps> = ({ project, open, onClose }) => {
     return (
         <Dialog open={open} onClose={onClose} fullWidth={true}>
             <DialogTitle>
@@ -16,7 +16,7 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose }) => 
                         <p>Stack: </p>
                     </Grid>
                     <Grid item xs={6}>
-                        {project.stack.split(",").map((tech) => (
+                        {project.stack.split(",").map((tech: string) => (
                             <Chip label={tech} style={{marginTop: "30px"}} />
                         ))}
                     </Grid>
@@ -28,7 +28,7 @@ const ProjectDialog: React.FC<AddButtonProps> = ({ project, open, onClose }) => 
                     </Grid>
                     <Grid item xs={6}>
                         <Typography variant="h6" style={{ marginTop:"30px" }}>
-                            <Link to={project.github}>{project.github}</Link>
+                            <a href={project.github}>{project.github}</a>
                         </Typography>
                     </Grid>
                 </Grid>

@@ -2,33 +2,26 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { FormControl, Autocomplete } from '@mui/material';
+import { FormControl } from '@mui/material';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
 interface FormData {
   fullname: string;
-  relation: string;
+  email: string;
   message: string;
 }
 const Contact = () => {
   const [formData, setFormData] = useState<FormData>({
     fullname: '',
-    relation: '',
+    email: '',
     message: ''
   })
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (e.target.innerText != '') {
-      setFormData({
-        ...formData,
-        relation: e.target.innerText,
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    }
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -36,12 +29,6 @@ const Contact = () => {
 
     console.log(formData)
   }
-
-  const relations = [
-    {relation: 'Family/Friend'},
-    {relation: 'Current/Former Colleague'},
-    {relation: 'Work Opportunity'}
-  ]
 
   return (
     <div id='contact' style={{ paddingBottom: '50px' }}>
@@ -59,18 +46,12 @@ const Contact = () => {
                 style={{ marginBottom: '16px', width: '500px' }} 
                 onChange={handleChange} 
               />
-              <Autocomplete
-                id="tags-outlined"
-                options={relations}
-                getOptionLabel={(option) => option.relation}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Relationship..."
-                  />
-                )}
+              <TextField
+                name='email'
+                label='Email'
+                variant='outlined'
+                style={{ marginBottom: '16px', width: '500px' }}
                 onChange={handleChange}
-                style={{ marginBottom: '16px', width: '500px' }} 
               />
               <TextField 
                 name= 'message' 

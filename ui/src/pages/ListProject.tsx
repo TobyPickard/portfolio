@@ -1,10 +1,10 @@
 import { Card, CardActionArea, CardContent, Chip, Grid, Typography } from "@mui/material";
 import { useState  } from "react";
 import ProjectDialog from "../Components/ProjectDialog"
-import AddProjectButton from "../Components/AddProjectButton";
+import ProjectProps from "../Interfaces/ProjectProps";
 
 const ListProject = () => {
-  const [project, setProject] = useState({id:0, description:'', stack:'', github:'', objective:'', status:''});
+  const [project, setProject] = useState<ProjectProps>({id:0, name: '', description:'', stack:'', github:'', status:''});
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const projects =[
@@ -12,7 +12,7 @@ const ListProject = () => {
     {id:1, name: 'proj1', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'In Progress'},
   ]
 
-  const handleCardClick = (card) => {
+  const handleCardClick = (card: ProjectProps) => {
     setProject(card)
     setIsDialogOpen(true);
   }
@@ -34,7 +34,7 @@ const ListProject = () => {
               <Card sx={{ width: 1000 }}>
                 <CardActionArea onClick={() => handleCardClick(card)}>
                   <CardContent>
-                    <Typography id={card.id} variant="h3" component="div">
+                    <Typography key={card.id} variant="h3" component="div">
                       {card.name}
                     </Typography>
                     {card.stack.split(",").map((tech) => (

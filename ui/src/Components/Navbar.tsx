@@ -1,10 +1,9 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, useScrollTrigger, Slide, Button, Link } from '@mui/material';
+import { AppBar, Toolbar, Typography, useScrollTrigger, Slide, Button } from '@mui/material';
 
 const TopNavbar = () => {
   const trigger = useScrollTrigger();
 
-  const handleClick = (component) => {
+  const handleClick = (component: string) => {
     const element = document.getElementById(component);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
