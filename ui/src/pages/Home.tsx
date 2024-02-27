@@ -1,5 +1,3 @@
-// Home.js
-
 import Footer from "../Components/Footer";
 import TopNavbar from "../Components/Navbar";
 import About from "./About";
