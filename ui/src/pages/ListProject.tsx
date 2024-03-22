@@ -8,7 +8,7 @@ const ListProject = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const projects =[
-    {id:0, name: 'Portfolio', description: 'This is a project to make a web application to personal portfolio.', stack: 'Python,React.js,AWS', github: 'https://github.com/TobyPickard/portfolio.git', status: 'Complete'},
+    {id:0, name: 'Portfolio', description: 'This is a project to make a web application to personal portfolio.', stack: 'Python,React.js,AWS,Git', github: 'https://github.com/TobyPickard/portfolio.git', status: 'Complete'},
     {id:1, name: 'proj1', description: 'This is a short description', stack: 'Java,Python,AWS', github: 'Github URL', status: 'In Progress'},
   ]
 
@@ -24,7 +24,7 @@ const ListProject = () => {
   return (
     <div style={{ backgroundColor: 'lightblue' }} id="projects">
       <div style={{display:'flex', justifyContent: 'center', alignItems:'center'}}>
-        <h1>Projects</h1>
+        <h1>Personal Projects</h1>
       </div>
       {/* Add content for the Add page */}
       <Grid container>

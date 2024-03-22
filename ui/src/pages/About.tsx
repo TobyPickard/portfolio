@@ -1,4 +1,4 @@
-import { Button, Chip, Grid, Typography } from "@mui/material";
+import { Button, Chip, Divider, Grid, Typography } from "@mui/material";
 
 const About = () => {
   const tech = ['Java', 'Python', 'AWS', 'Git', 'ReactJS']
@@ -31,12 +31,18 @@ const About = () => {
         </Grid>
         <Grid item xs={6}>
           <div style={{paddingLeft: '250px', paddingRight: '250px', paddingTop: '50px'}}>
+            <Typography variant="h5">Skills</Typography>
+            <Divider />
             {tech.map((item) => (
               <Chip label={item} />
               )
             )}
+            <Typography variant="h5">Career</Typography>
+            <Divider />
+            <Typography variant="h5">Education</Typography>
+            <Divider />
           </div>
-          
+
         </Grid>
       </Grid>
       {/* Add content for the About page */}
