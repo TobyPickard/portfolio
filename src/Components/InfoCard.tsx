@@ -1,7 +1,11 @@
 import { Card, CardContent, Typography } from "@mui/material";
-import CardProps from "../Interfaces/CardProps";
 
-const InfoCard: React.FC<CardProps> = ({ title, lines }) => {
+interface InfoCardProps {
+    title: string,
+    lines: string[]
+}
+
+export default function InfoCard({ title, lines } : InfoCardProps) {
     return (
         <Card>
             <CardContent>
@@ -18,5 +22,4 @@ const InfoCard: React.FC<CardProps> = ({ title, lines }) => {
             </CardContent>
         </Card>
     );
-};
-export default InfoCard;
+}

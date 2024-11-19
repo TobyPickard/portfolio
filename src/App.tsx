@@ -1,12 +1,10 @@
 import './App.css'
 import Home from './pages/Home';
 
-const App = () => {
+export default function App() {
   return (
     <div>
       <Home />
     </div>
   );
-};
-
-export default App
+}

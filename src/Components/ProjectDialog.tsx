@@ -1,7 +1,7 @@
 import { Button, Chip, Dialog, DialogContent, DialogTitle, DialogActions, Divider, Grid, Typography } from "@mui/material";
 import ProjectDialogProps from "../Interfaces/ProjectDialogProps";
 
-const ProjectDialog: React.FC<ProjectDialogProps> = ({ project, open, onClose }) => {
+export default function ProjectDialog({ project, open, onClose }: ProjectDialogProps) {
     return (
         <Dialog open={open} onClose={onClose} fullWidth={true}>
             <DialogTitle>
@@ -63,5 +63,4 @@ const ProjectDialog: React.FC<ProjectDialogProps> = ({ project, open, onClose })
             </DialogActions>
         </ Dialog>
     );
-};
-export default ProjectDialog;
+}

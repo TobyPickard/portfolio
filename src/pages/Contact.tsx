@@ -6,7 +6,7 @@ import { FormControl } from '@mui/material';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import FormDataProps from '../Interfaces/FormDataProps';
 
-const Contact = () => {
+export default function Contact() {
     const [formData, setFormData] = useState<FormDataProps>({
         fullname: '',
         email: '',
@@ -64,5 +64,4 @@ const Contact = () => {
             </div>
         </div>
     );
-};
-export default Contact;
+}
